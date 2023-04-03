@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Gameplay_Controller : MonoBehaviour {
+public class Home_Controller : MonoBehaviour {
 
-    public static Gameplay_Controller instance;
+    /* public static Gameplay_Controller instance;
     public BloxxSpawner_Script bloxx_Spawner;
     public CameraLerp_Script cameraLerp;
 
     private int lerpCount;
+    private int bloxxCount = 0;
     
     [HideInInspector]
     public Bloxx_Script currentBox;
@@ -52,6 +53,11 @@ public class Gameplay_Controller : MonoBehaviour {
     public void RestartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     } //-- RestartGame function
+
+    public void BloxxScore() {
+        bloxxCount++;
+        
+    } */
 
 } //-- End
 

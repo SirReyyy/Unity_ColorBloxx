@@ -6,6 +6,7 @@ public class Bloxx_Script : MonoBehaviour {
     private bool canMove;
     private float moveSpeed = 2.0f;
     private Rigidbody2D myBody;
+    private SpriteRenderer spriteRend;
 
     private bool gameOver;
     private bool ignoreCollision;
@@ -15,6 +16,10 @@ public class Bloxx_Script : MonoBehaviour {
     void Awake() {
         myBody = GetComponent<Rigidbody2D>();
         myBody.gravityScale = 0.0f;
+
+        Color randColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
+        spriteRend = GetComponent<SpriteRenderer>();
+        spriteRend.color = randColor;
     } //-- Awake function
 
     void Start() {
@@ -56,10 +61,11 @@ public class Bloxx_Script : MonoBehaviour {
     void BloxxLanded() {
         if(gameOver)
             return;
-        
+
         ignoreCollision = true;
         ignoreTrigger = true;
 
+        Gameplay_Controller.instance.BloxxScore();
         Gameplay_Controller.instance.SpawnNewBloxx();
         Gameplay_Controller.instance.LerpCamera();
     } //-- BloxxLanded function
@@ -73,8 +79,6 @@ public class Bloxx_Script : MonoBehaviour {
             return;
         
         if(target.gameObject.tag == "Platform" || target.gameObject.tag == "Bloxx") {
-
-            Debug.Log("Test");
 
             Invoke("BloxxLanded", 2.0f);
             ignoreCollision = true;
