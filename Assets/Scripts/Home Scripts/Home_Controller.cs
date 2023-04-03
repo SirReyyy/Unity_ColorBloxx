@@ -3,62 +3,33 @@ using UnityEngine.SceneManagement;
 
 public class Home_Controller : MonoBehaviour {
 
-    /* public static Gameplay_Controller instance;
-    public BloxxSpawner_Script bloxx_Spawner;
-    public CameraLerp_Script cameraLerp;
+    public BloxxSpawnerHome_Script bloxxSpawner_Home;
 
-    private int lerpCount;
-    private int bloxxCount = 0;
-    
-    [HideInInspector]
-    public Bloxx_Script currentBox;
-
-    void Awake() {
-        if(instance == null)
-            instance = this;
-    } //-- Awake function
-
-    void Start() {
-        bloxx_Spawner.SpawnBloxx();
-    } //-- Start function
+    private float instanceDelay = 1.0f;
+    private float time = 0.0f;
+    private float interpolationPeriod = 0.5f;
 
     void Update() {
-        DetectInput();
+        time += Time.deltaTime;
+ 
+        if (time >= interpolationPeriod) {
+            time = time - interpolationPeriod;
+            SpawnNewHomeBloxx();
+        }
+ 
     } //-- Update function
 
-    void DetectInput() {
-        if(Input.GetMouseButtonDown(0)) {
-            currentBox.DropBloxx();
-        }
+    public void SpawnNewHomeBloxx() {
+        Invoke("NewHomeBloxx", instanceDelay);
+    } //-- SpawnNewHomeBloxx function
 
-    } //-- DetectInput function
-
-    public void SpawnNewBloxx() {
-        Invoke("NewBloxx", 2.0f);
-    } //-- SpawnNewBloxx function
-
-    void NewBloxx() {
-        bloxx_Spawner.SpawnBloxx();
+    void NewHomeBloxx() {
+        bloxxSpawner_Home.SpawnHomeBloxx();
     } //-- NewBloxx function
 
-    public void LerpCamera() {
-        lerpCount++;
-        
-        if(lerpCount == 1) {
-            lerpCount = 0;
-            cameraLerp.targetPos.y += 1.2f;
-        }
-    } //-- LerpCamera function
-
-    public void RestartGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    } //-- RestartGame function
-
-    public void BloxxScore() {
-        bloxxCount++;
-        
-    } */
-
+    public void PlayGame() {
+        SceneManager.LoadScene("Gameplay");
+    }
 } //-- End
 
 

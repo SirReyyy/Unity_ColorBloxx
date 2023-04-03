@@ -1,19 +1,34 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Home_UI : MonoBehaviour {
-    void Start() {
-        
+
+    public Home_Controller _homeController;
+    public VisualElement veHome;
+    public Button btnPlay;
+
+
+    void OnEnable() {
+        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+
+        // Home Container
+        veHome = root.Q<VisualElement>("VE_Home");
+        btnPlay = root.Q<Button>("Btn_Play");
+
+        // Button Function
+        btnPlay.clicked += () => PlayGame();
+    } //-- OnEnable function
+
+    void PlayGame() {
+        _homeController.PlayGame();
     }
 
-    void Update() {
-        
-    }
-}
+} //-- End
 
 
 /*
 
 Made by : Rey M. Oronos, Jr.
-Project : 
+Project : Color Bloxx
 
 */

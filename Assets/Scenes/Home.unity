@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da972c4c31f290469f3e17d9a6def41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloxx_prefab: {fileID: 8054031879236770124, guid: 71d91cf69df4b2f41933afb81b1ba4f8, type: 3}
+  bloxxHome_prefab: {fileID: 8054031879236770124, guid: 71d91cf69df4b2f41933afb81b1ba4f8, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 831769477}
   - component: {fileID: 831769478}
   m_Layer: 0
-  m_Name: GameOver_Obj
+  m_Name: Bloxx_Destroyer
   m_TagString: GameOver
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -379,7 +379,7 @@ Transform:
   m_GameObject: {fileID: 831769476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -5.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -455,6 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9328ce72427e8c445af36ae74f726359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloxxSpawner_Home: {fileID: 339839906}
 --- !u!1 &2119732877
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,8 +466,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2119732879}
   - component: {fileID: 2119732878}
+  - component: {fileID: 2119732880}
   m_Layer: 5
-  m_Name: UI_Gameplay
+  m_Name: UI_Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,3 +505,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2119732880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119732877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0390c3020613f74288ec4ae8fed8100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _homeController: {fileID: 1280033929}

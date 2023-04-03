@@ -5,10 +5,13 @@ public class Gameplay_Controller : MonoBehaviour {
 
     public static Gameplay_Controller instance;
     public BloxxSpawner_Script bloxx_Spawner;
+    public Gameplay_UI _gameplayUI;
+
     public CameraLerp_Script cameraLerp;
 
     private int lerpCount;
-    private int bloxxCount = 0;
+    [HideInInspector]
+    public int bloxxCount = 0;
     
     [HideInInspector]
     public Bloxx_Script currentBox;
@@ -34,7 +37,7 @@ public class Gameplay_Controller : MonoBehaviour {
     } //-- DetectInput function
 
     public void SpawnNewBloxx() {
-        Invoke("NewBloxx", 2.0f);
+        Invoke("NewBloxx", 1.2f);
     } //-- SpawnNewBloxx function
 
     void NewBloxx() {
@@ -54,10 +57,18 @@ public class Gameplay_Controller : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     } //-- RestartGame function
 
+    public void ReturnHome() {
+        SceneManager.LoadScene("Home");
+    } //-- ReturnHome function
+
     public void BloxxScore() {
         bloxxCount++;
-        
-    }
+        _gameplayUI.UpdateScore(bloxxCount);
+    } //-- BloxxScore function
+    
+    public void ShowGameOverVE() {
+        _gameplayUI.GameOverVE();
+    } //-- ShowGameOverVE
 
 } //-- End
 

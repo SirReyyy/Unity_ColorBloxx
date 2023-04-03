@@ -4,7 +4,7 @@ public class Bloxx_Script : MonoBehaviour {
     
     private float min_X = -2.2f, max_X = 2.2f;
     private bool canMove;
-    private float moveSpeed = 2.0f;
+    private float moveSpeed = 3.0f;
     private Rigidbody2D myBody;
     private SpriteRenderer spriteRend;
 
@@ -80,7 +80,7 @@ public class Bloxx_Script : MonoBehaviour {
         
         if(target.gameObject.tag == "Platform" || target.gameObject.tag == "Bloxx") {
 
-            Invoke("BloxxLanded", 2.0f);
+            Invoke("BloxxLanded", 1.0f);
             ignoreCollision = true;
         }
     } //-- OnCollisionEnter2D function
@@ -94,7 +94,7 @@ public class Bloxx_Script : MonoBehaviour {
             gameOver = true;
             ignoreTrigger = true;
 
-            Invoke("RestartGame", 2.0f);
+            Gameplay_Controller.instance.ShowGameOverVE();
         }
     } //-- OnTriggerEnter2D function
 

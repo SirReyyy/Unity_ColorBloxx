@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class BloxxSpawnerHome_Script : MonoBehaviour {
     
-    public GameObject bloxx_prefab;
+    public GameObject bloxxHome_prefab;
+    private float min_X = -3.0f, max_X = 3.0f;
 
-    public void SpawnBloxx() {
-        GameObject bloxx_obj = Instantiate(bloxx_prefab);
+    public void SpawnHomeBloxx() {
+        GameObject bloxx_obj = Instantiate(bloxxHome_prefab);
 
         Vector3 temp = transform.position;
+        temp.x = Random.Range(min_X, max_X);
         temp.z = 0.0f;
 
         bloxx_obj.transform.position = temp;
