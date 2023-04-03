@@ -47,11 +47,52 @@ public class Bloxx_Script : MonoBehaviour {
 
     } //-- MoveBox function
 
-    public void DropBox() {
+    public void DropBloxx() {
         canMove = false;
         myBody.gravityScale = Random.Range(2,4);
 
     } //-- DropBox function
+
+    void BloxxLanded() {
+        if(gameOver)
+            return;
+        
+        ignoreCollision = true;
+        ignoreTrigger = true;
+
+        Gameplay_Controller.instance.SpawnNewBloxx();
+        Gameplay_Controller.instance.LerpCamera();
+    } //-- BloxxLanded function
+
+    void RestartGame() {
+        Gameplay_Controller.instance.RestartGame();
+    } //-- RestartGame function
+
+    void OnCollisionEnter2D(Collision2D target) {
+        if(ignoreCollision)
+            return;
+        
+        if(target.gameObject.tag == "Platform" || target.gameObject.tag == "Bloxx") {
+
+            Debug.Log("Test");
+
+            Invoke("BloxxLanded", 2.0f);
+            ignoreCollision = true;
+        }
+    } //-- OnCollisionEnter2D function
+
+    void OnTriggerEnter2D(Collider2D target) {
+        if(ignoreTrigger)
+            return;
+        
+        if(target.tag == "GameOver") {
+            CancelInvoke("BloxxLanded");
+            gameOver = true;
+            ignoreTrigger = true;
+
+            Invoke("RestartGame", 2.0f);
+        }
+    } //-- OnTriggerEnter2D function
 
 } //-- End
 
